@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/11/2018 04:32:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.upeu.modell.Persona" table="persona" schema="public" optimistic-lock="version">
+        <id name="idPersona" type="int">
+            <column name="id_persona" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" length="50" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="50" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="8" />
+        </property>
+        <property name="dfdfd" type="date">
+            <column name="dfdfd" length="13" />
+        </property>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_persona" not-null="true" />
+            </key>
+            <one-to-many class="com.upeu.modell.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>
